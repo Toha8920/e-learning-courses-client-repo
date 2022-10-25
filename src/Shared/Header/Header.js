@@ -3,6 +3,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
+import ReactTooltip from 'react-tooltip';
 
 const Header = () => {
     const { user } = useContext(AuthContext);
@@ -32,9 +33,14 @@ const Header = () => {
                 <Navbar.Link href="/navbars">
                     {user?.displayName}
                 </Navbar.Link>
-                <Navbar.Link href="/">
+                <Navbar.Link>
                     {user?.photoURL ?
-                        <img style={{ height: '30px', borderRadius: '20px' }} src={user.photoURL} alt="" />
+                        <>
+
+                            <img style={{ height: '30px', borderRadius: '20px' }} src={user.photoURL} alt="" title={user.displayName} />
+
+                        </>
+
                         :
                         <FaUser></FaUser>
                     }
@@ -50,8 +56,12 @@ const Header = () => {
                     Registration
                 </Navbar.Link>
             </Navbar.Collapse>
+            <ReactTooltip />
         </Navbar>
     );
 };
 
 export default Header;
+
+
+//  data-tip="hello world"

@@ -1,3 +1,4 @@
+import CardDetails from "../../Pages/CardDetails/CardDetails";
 import Courses from "../../Pages/Courses/Courses";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -19,7 +20,13 @@ export const routes = createBrowserRouter([
                 }
 
             },
-
+            {
+                path: '/details/:id',
+                element: <CardDetails></CardDetails>,
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/courses/${params.id}`)
+                }
+            },
             {
                 path: '/login',
                 element: <Login></Login>

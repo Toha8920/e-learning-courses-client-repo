@@ -1,15 +1,13 @@
 import { Card } from 'flowbite-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Course.css'
 
 const Course = ({ course }) => {
 
-    const { name, price, description, image } = course;
+    const { name, price, description, image, id } = course;
     return (
-        <div>
-            <div className='text'>
-                <p className='flex-col'>{name}</p>
-            </div>
+        <div className='gird grid-cols-3'>
             <div className="max-w-sm card">
                 <Card
                     imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
@@ -69,12 +67,12 @@ const Course = ({ course }) => {
                         <span className="text-3xl font-bold text-gray-900 dark:text-white">
                             $599
                         </span>
-                        <a
-                            href="#"
+                        <Link
+                            to={`/details/${id}`}
                             className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Add to cart
-                        </a>
+                        </Link>
                     </div>
                 </Card>
             </div>
