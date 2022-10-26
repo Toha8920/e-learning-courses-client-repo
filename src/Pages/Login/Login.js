@@ -4,7 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './Login.css'
 
@@ -14,6 +14,9 @@ const Login = () => {
     const { providerLogin, signIn, githubSignIn } = useContext(AuthContext);
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/'
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -31,7 +34,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error)
