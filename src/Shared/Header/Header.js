@@ -25,12 +25,12 @@ const Header = () => {
         >
             <Navbar.Brand href="https://flowbite.com/">
                 <img
-                    src="https://flowbite.com/docs/images/logo.svg"
+                    src="https://img.freepik.com/premium-vector/e-learning-concept-logo-learning-online-center-graduation-vector-illustration-flat-design-abstract-background-education-logo-template-online-education-internet-teaching-distance-training_153097-834.jpg?w=2000"
                     className="mr-3 h-6 sm:h-9"
                     alt="Flowbite Logo"
                 />
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                    Flowbite
+                    E learning Website
                 </span>
             </Navbar.Brand>
             <Navbar.Toggle />
