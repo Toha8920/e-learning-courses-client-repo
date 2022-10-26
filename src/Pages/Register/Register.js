@@ -2,6 +2,7 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
@@ -103,6 +104,7 @@ const Register = () => {
 
                 </p>
             </form>
+            <p className='text-center'>Already have an account <Link className='text-blue-700 underline' to='/login'>Login</Link></p>
         </div>
     );
 };

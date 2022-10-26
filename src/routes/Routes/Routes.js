@@ -1,3 +1,5 @@
+import { FaBlog } from "react-icons/fa";
+import Blog from "../../Pages/Blog/Blog";
 import CardDetails from "../../Pages/CardDetails/CardDetails";
 import Courses from "../../Pages/Courses/Courses";
 import Home from "../../Pages/Home/Home";
@@ -42,6 +44,10 @@ export const routes = createBrowserRouter([
                 loader: () => {
                     return fetch('http://localhost:5000/')
                 }
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
         ]
     }

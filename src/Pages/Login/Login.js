@@ -4,7 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './Login.css'
 
@@ -109,6 +109,7 @@ const Login = () => {
                     <button onClick={handleGithubSignIn} type="button" className="flex justify-center items-center text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><FaGithub className='mr-2'></FaGithub>Login with Github</button>
                 </div>
             </div>
+            <p className=' text-center'>Do not have an account Please <Link className='underline text-blue-700' to='/register'>Register</Link></p>
         </div>
 
     );

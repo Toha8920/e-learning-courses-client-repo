@@ -77,6 +77,9 @@ const Header = () => {
                 <Link to="/courses">
                     Courses
                 </Link>
+                <Link to="/blog">
+                    Blog
+                </Link>
 
             </Navbar.Collapse>
             <ReactTooltip />
