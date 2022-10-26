@@ -2,6 +2,7 @@ import CardDetails from "../../Pages/CardDetails/CardDetails";
 import Courses from "../../Pages/Courses/Courses";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
+import Register from "../../Pages/Register/Register";
 import LeftSideNav from "../../Shared/LeftSideNav/LeftSideNav";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -30,6 +31,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             },
             {
                 path: '/courses',

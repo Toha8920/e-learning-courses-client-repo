@@ -4,9 +4,20 @@ import { useContext } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
 import ReactTooltip from 'react-tooltip';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => console.error(error))
+
+    }
+
     return (
         <Navbar
             fluid={true}
@@ -24,14 +35,32 @@ const Header = () => {
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
-                <Navbar.Link
-                    href="/"
+                <Link
+                    to="/"
                     active={true}
                 >
                     Home
-                </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    {user?.displayName}
+                </Link>
+                <Navbar.Link>
+                    {
+                        user?.uid ?
+                            <>
+                                <span>   {user?.displayName}</span>
+
+                                <button className='ml-3' onClick={handleLogOut}>Log Out</button>
+                            </>
+                            :
+                            <div className='flex'>
+                                <Link className='mr-3' to="/login">
+                                    Login
+                                </Link>
+
+                                <Link to="/register">
+                                    Registration
+                                </Link>
+                            </div>
+                    }
+
                 </Navbar.Link>
                 <Navbar.Link>
                     {user?.photoURL ?
@@ -45,16 +74,10 @@ const Header = () => {
                         <FaUser></FaUser>
                     }
                 </Navbar.Link>
-                <Navbar.Link href="/courses">
+                <Link to="/courses">
                     Courses
-                </Navbar.Link>
-                <Navbar.Link href="/login">
-                    Login
-                </Navbar.Link>
+                </Link>
 
-                <Navbar.Link href="/Registration">
-                    Registration
-                </Navbar.Link>
             </Navbar.Collapse>
             <ReactTooltip />
         </Navbar>

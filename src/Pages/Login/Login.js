@@ -1,15 +1,22 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { Button, Label, TextInput } from 'flowbite-react';
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './Login.css'
 
 const Login = () => {
-    const { providerLogin } = useContext(AuthContext);
+    const [error, setError] = useState('')
+    const [githubUser, setGithubUser] = useState(null);
+    const { providerLogin, signIn, githubSignIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
 
 
@@ -18,16 +25,39 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                setError('');
+                navigate('/')
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+            })
     }
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                setGithubUser(githubUser)
+                console.log(user);
+
             })
             .catch(error => console.error(error));
+    }
+
+    const handleGithubSignIn = () => {
+        githubSignIn(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setGithubUser(githubUser)
+            })
+            .catch(error => console.error(error))
     }
 
     return (
@@ -64,15 +94,19 @@ const Login = () => {
                 </div>
 
                 <Button type="submit" className='btn-submit'>
-                    Submit
+                    Login
                 </Button>
+                <p className='text-yellow-500'>
+                    {error}
+
+                </p>
             </form>
             <div className='flex justify-center'>
                 <div className=' mt-3 '>
                     <button onClick={handleGoogleSignIn} type="button" className="flex justify-center items-center text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><FaGoogle className='mr-2'></FaGoogle>Login with google</button>
                 </div>
                 <div className=' mt-3'>
-                    <button type="button" className="flex justify-center items-center text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><FaGithub className='mr-2'></FaGithub>Login with Github</button>
+                    <button onClick={handleGithubSignIn} type="button" className="flex justify-center items-center text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><FaGithub className='mr-2'></FaGithub>Login with Github</button>
                 </div>
             </div>
         </div>

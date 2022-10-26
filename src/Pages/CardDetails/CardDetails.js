@@ -1,13 +1,17 @@
+import { Card } from 'flowbite-react';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import './CardDetails.css'
 
 const CardDetails = () => {
     const coursesDetails = useLoaderData();
-    console.log(coursesDetails)
+    const { title, image, description } = coursesDetails;
     return (
-        <div>
-            <h1>this is card detials</h1>
-        </div>
+        <Card className='card-container'>
+            <p className='text-2xl text-gray-700'>{title}</p>
+            <img src={image} alt="" />
+            <p>{description}</p>
+        </Card>
     );
 };
 
