@@ -1,4 +1,3 @@
-import { FaBlog } from "react-icons/fa";
 import Blog from "../../Pages/Blog/Blog";
 import CardDetails from "../../Pages/CardDetails/CardDetails";
 import CheckOut from "../../Pages/CheckOut/CheckOut";
@@ -7,7 +6,6 @@ import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import NotFound from "../../Pages/NotFound/NotFound";
 import Register from "../../Pages/Register/Register";
-import LeftSideNav from "../../Shared/LeftSideNav/LeftSideNav";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -22,7 +20,7 @@ export const routes = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>,
                 loader: () => {
-                    return fetch('http://localhost:5000/')
+                    return fetch('https://elarning-courses-server.vercel.app/')
                 }
 
             },
@@ -30,7 +28,7 @@ export const routes = createBrowserRouter([
                 path: '/details/:id',
                 element: <CardDetails></CardDetails>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/courses/${params.id}`)
+                    return fetch(`https://elarning-courses-server.vercel.app/courses/${params.id}`)
                 }
             },
             {
@@ -45,7 +43,7 @@ export const routes = createBrowserRouter([
                 path: '/courses',
                 element: <Courses></Courses>,
                 loader: () => {
-                    return fetch('http://localhost:5000/')
+                    return fetch('https://elarning-courses-server.vercel.app/')
                 }
             },
             {
@@ -56,7 +54,7 @@ export const routes = createBrowserRouter([
                 path: '/checkout/:id',
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/courses/${params.id}`)
+                    return fetch(`https://elarning-courses-server.vercel.app/courses/${params.id}`)
                 }
             }
         ]

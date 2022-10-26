@@ -1,37 +1,34 @@
 import { Button, Card } from 'flowbite-react';
-import React from 'react';
+import React, { useRef } from 'react';
 import { FaDownload } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import './CardDetails.css'
+import ReactToPdf from "react-to-pdf";
+
+
+
+
 
 const CardDetails = () => {
     const coursesDetails = useLoaderData();
     const { title, image, description, id } = coursesDetails;
 
-    const handleBtn = () => {
+    const ref = useRef();
 
-    }
     return (
-        <div>
 
-            <div className='flex justify-between'>
-                <p className='text-2xl  font-bold tracking-tight text-gray-900 dark:text-white'>{title}</p>
-                <div>
-                    <Button><FaDownload></FaDownload> Download Now</Button>
-
-                </div>
+        <div className=" mx-auto border max-w-lg rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+            <div className='flex justify-between p-5'>
+                <p>{title}</p>
+                <button>generate to pdf</button>
             </div>
-            <div className="max-w-sm card-container">
-
-                <Card
-                    imgAlt="Meaningful alt text for an image that is not purely decorative"
-                    imgSrc={image}
-                >
-                    <p className="font-normal text-gray-700 dark:text-gray-400">
-                        {description}
-                    </p>
-                    <Button><Link to={`/checkout/${id}`}>Get premium access</Link></Button>
-                </Card>
+            <img src={image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
+            <div className="flex flex-col justify-between p-6 space-y-8">
+                <div className="space-y-2">
+                    <h2 className="text-3xl font-semibold tracking-wide">Donec lectus leo</h2>
+                    <p className="dark:text-gray-100">Curabitur luctus erat nunc, sed ullamcorper erat vestibulum eget.</p>
+                </div>
+                <Button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">Read more</Button>
             </div>
         </div>
     );
