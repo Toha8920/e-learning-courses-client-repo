@@ -9,7 +9,7 @@ const Courses = () => {
 
     return (
         <div className='courses'>
-            <LeftSide></LeftSide>
+            <LeftSide ></LeftSide>
             <RightSide></RightSide>
         </div>
     );

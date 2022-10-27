@@ -8,3 +8,16 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
+
+@media only screen and (max-width:700px) {
+    .courses-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+
+    .courses {
+        display: flex;
+        flex-direction: column;
+    }
+}

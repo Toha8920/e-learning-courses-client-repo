@@ -5,9 +5,8 @@ import './LeftSide.css'
 
 const LeftSide = () => {
     const courses = useLoaderData()
-    console.log(courses)
     return (
-        <div >
+        <div className='h-68'>
             {
                 courses.map(cs => <Cs key={cs.id} cs={cs}></Cs>)
             }

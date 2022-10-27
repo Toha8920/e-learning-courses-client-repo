@@ -2,6 +2,7 @@ import Blog from "../../Pages/Blog/Blog";
 import CardDetails from "../../Pages/CardDetails/CardDetails";
 import CheckOut from "../../Pages/CheckOut/CheckOut";
 import Courses from "../../Pages/Courses/Courses";
+import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import NotFound from "../../Pages/NotFound/NotFound";
@@ -56,6 +57,10 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => {
                     return fetch(`https://elarning-courses-server.vercel.app/courses/${params.id}`)
                 }
+            },
+            {
+                path: '/faq',
+                element: <Faq></Faq>
             }
         ]
     },

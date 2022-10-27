@@ -2,3 +2,7 @@
     margin: 0 auto;
     width: 100%;
 }
+
+.card-image img {
+    margin-left: 10px;
+}

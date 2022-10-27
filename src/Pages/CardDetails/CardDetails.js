@@ -7,8 +7,6 @@ import ReactToPdf from "react-to-pdf";
 
 
 
-
-
 const CardDetails = () => {
     const coursesDetails = useLoaderData();
     const { title, image, description, id } = coursesDetails;
@@ -17,18 +15,23 @@ const CardDetails = () => {
 
     return (
 
-        <div className=" mx-auto border max-w-lg rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+        <div ref={ref} className="card-image mx-auto border max-w-lg rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
             <div className='flex justify-between p-5'>
-                <p>{title}</p>
-                <button>generate to pdf</button>
+                <p className='text-2xl font-bold'>{title}</p>
+                <Button><FaDownload></FaDownload>
+                    <ReactToPdf targetRef={ref} filename="div-blue.pdf">
+                        {({ toPdf }) => (
+                            <button onClick={toPdf}>Generate PDF</button>
+                        )}
+                    </ReactToPdf>
+                </Button>
             </div>
-            <img src={image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
+            <img src={image} alt="" className="ml-4 object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
             <div className="flex flex-col justify-between p-6 space-y-8">
                 <div className="space-y-2">
-                    <h2 className="text-3xl font-semibold tracking-wide">Donec lectus leo</h2>
-                    <p className="dark:text-gray-100">Curabitur luctus erat nunc, sed ullamcorper erat vestibulum eget.</p>
+                    <p className="dark:text-gray-100 ">{description}</p>
                 </div>
-                <Button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">Read more</Button>
+                <Button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900"><Link to={`/checkout/${id}`}>Get premium access</Link></Button>
             </div>
         </div>
     );
