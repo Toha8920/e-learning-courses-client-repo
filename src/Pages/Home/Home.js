@@ -87,7 +87,7 @@ const Home = () => {
                         <div className="w-full bg-gray-700 py-6 px-4 sm:flex sm:items-center sm:justify-between">
                             <Footer.Copyright
                                 href="#"
-                                by="Flowbite™"
+                                by=""
                                 year={2022}
                             />
                             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">

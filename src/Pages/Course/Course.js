@@ -5,7 +5,7 @@ import './Course.css'
 
 const Course = ({ course }) => {
 
-    const { name, title, price, description, image, id, rating } = course;
+    const { title, price, image, id, rating } = course;
     return (
         <div className='gird grid-cols-3'>
             <div className="max-w-sm card">
@@ -13,11 +13,11 @@ const Course = ({ course }) => {
                     imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
                     imgSrc={image}
                 >
-                    <a href="#">
+                    <Link>
                         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             {title}
                         </h5>
-                    </a>
+                    </Link>
                     <div className="mt-2.5 mb-5 flex items-center">
                         <svg
                             className="h-5 w-5 text-yellow-300"
