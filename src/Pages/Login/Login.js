@@ -46,7 +46,7 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                setGithubUser(githubUser)
+                navigate(from, { replace: true })
                 console.log(user);
 
             })
