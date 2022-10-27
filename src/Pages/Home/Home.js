@@ -1,4 +1,4 @@
-import { Footer, Icon } from 'flowbite-react';
+import { Footer } from 'flowbite-react';
 import React from 'react';
 import { FaFacebook } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
