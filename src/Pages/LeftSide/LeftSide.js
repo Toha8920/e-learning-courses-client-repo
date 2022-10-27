@@ -6,7 +6,7 @@ import './LeftSide.css'
 const LeftSide = () => {
     const courses = useLoaderData()
     return (
-        <div className='h-68'>
+        <div className=''>
             {
                 courses.map(cs => <Cs key={cs.id} cs={cs}></Cs>)
             }

@@ -4,7 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './Login.css'
 
@@ -57,6 +57,7 @@ const Login = () => {
         githubSignIn(githubProvider)
             .then(result => {
                 const user = result.user;
+                navigate(from, { replace: true })
                 console.log(user);
                 setGithubUser(githubUser)
             })

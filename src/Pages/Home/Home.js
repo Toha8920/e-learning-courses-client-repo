@@ -6,12 +6,14 @@ import SingleCourse from '../SingleCourse/SingleCourse';
 
 const Home = () => {
     const courses = useLoaderData();
-    console.log(courses)
+
     return (
         <div>
-            {
-                courses.map(course => <SingleCourse course={course}></SingleCourse>)
-            }
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
+                {
+                    courses.map(course => <SingleCourse course={course}></SingleCourse>)
+                }
+            </div>
             <div>
                 <Footer bgDark={true}>
                     <div className="w-full">
